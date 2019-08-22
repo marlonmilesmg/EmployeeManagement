@@ -19,14 +19,46 @@ namespace EmployeeManagement
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILogger<Startup> logger)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env /* Logger Injection, ILogger<Startup> logger */)
         {
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
             }
 
-            app.Use(async (context, next) =>
+            // Use Default page Index.html or Default.html
+            app.UseDefaultFiles();
+            app.UseStaticFiles();
+
+            /*   // Opening another page as default instead of the Default page using DefaultFileOptions Middleware {
+               DefaultFilesOptions defaultFilesOptions = new DefaultFilesOptions();
+               defaultFilesOptions.DefaultFileNames.Clear();
+               defaultFilesOptions.DefaultFileNames.Add("foo.html");
+               app.UseDefaultFiles(defaultFilesOptions);
+               app.UseStaticFiles();
+               // } */
+
+            /*  // Opening Default Page using FileServer Middleware {
+             DefaultFilesOptions defaultFilesOptions = new DefaultFilesOptions();
+             defaultFilesOptions.DefaultFileNames.Clear();
+             defaultFilesOptions.DefaultFileNames.Add("foo.html");
+             app.UseFileServer();
+             // } */
+
+            /* // Opening another file as default page Using FileServer Middleware {
+            FileServerOptions fileServerOptions = new FileServerOptions();
+            fileServerOptions.DefaultFilesOptions.DefaultFileNames.Clear();
+            fileServerOptions.DefaultFilesOptions.DefaultFileNames.Add("foo.html");
+            app.UseFileServer(fileServerOptions);
+            // } */
+
+            app.Run(async (context) =>
+            {
+                await context.Response.WriteAsync("Hello Employee Management System with ASP.NET Core");
+            });
+
+        // Request Processing Pipeline Middleware {
+        /*    app.Use(async (context, next) =>
             {
                 logger.LogInformation("MW1: Incoming Request");
                 await next();
@@ -45,6 +77,10 @@ namespace EmployeeManagement
                 await context.Response.WriteAsync("MW3: Request handled and response produced");
                 logger.LogInformation("MW3: Request handled and response produced");
             });
+
+            // } to this part */
+
+
         }
     }
 }
