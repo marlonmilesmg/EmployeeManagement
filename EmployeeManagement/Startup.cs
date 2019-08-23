@@ -16,6 +16,7 @@ namespace EmployeeManagement
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddMvc();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -27,8 +28,9 @@ namespace EmployeeManagement
             }
 
             // Use Default page Index.html or Default.html
-            app.UseDefaultFiles();
+           // app.UseDefaultFiles();
             app.UseStaticFiles();
+            app.UseMvcWithDefaultRoute();
 
             /*   // Opening another page as default instead of the Default page using DefaultFileOptions Middleware {
                DefaultFilesOptions defaultFilesOptions = new DefaultFilesOptions();
@@ -54,7 +56,7 @@ namespace EmployeeManagement
 
             app.Run(async (context) =>
             {
-                await context.Response.WriteAsync("Hello Employee Management System with ASP.NET Core");
+                await context.Response.WriteAsync("Development Environment: " + env.EnvironmentName);
             });
 
         // Request Processing Pipeline Middleware {
