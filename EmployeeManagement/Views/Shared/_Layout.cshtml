@@ -1,0 +1,15 @@
+﻿@*A _Layout.cshtml file is used to remove duplicate html tags on multiple pages, thereby creating a base shared layout for view pages*@
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+</head>
+<body>
+    <div>
+        @RenderBody()
+    </div>
+</body>
+</html>
