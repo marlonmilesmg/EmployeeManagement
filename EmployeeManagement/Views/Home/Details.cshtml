@@ -5,17 +5,45 @@
     ViewBag.Title = "Employee Details";
 }
 
-<h3>@Model.PageTitle</h3>
+@*Employee Details Display with CSS and Bootstrap Installed*@
+<div class="row justify-content-center m-3">
+    <div class="col-sm-8">
+        <div class="card">
+            <div class="card-header">
+                <h1>@Model.Employee.Name</h1>
+            </div>
+
+            <div class="card-body text-center">
+                <img class="card-img-top" src="~/images/marlon.png" />
+
+                <h4>Employee ID: @Model.Employee.Id</h4>
+                <h4>Employee Name: @Model.Employee.Name</h4>
+                <h4>Employee Email: @Model.Employee.Email</h4>
+                <h4>Employee Department: @Model.Employee.Department</h4>
+            </div>
+            <div class="card-footer text-center">
+                <a href="#" class="btn btn-primary">View</a>
+                <a href="#" class="btn btn-primary">Edit</a>
+                <a href="#" class="btn btn-danger">Delete</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+@*Employees Display Table without CSS and Bootstrap installed*@
+@*<h3>@Model.PageTitle</h3>
 
 <div>
-    Name: @Model.Employee.Name @*To access the model object properties we use @Model *@
+    Name: @Model.Employee.Name      // To access the model object properties we use @Model 
 </div>
 <div>
     Email: @Model.Employee.Email
 </div>
 <div>
     Department: @Model.Employee.Department
-</div>
+</div>*@
+
+
 
 @section  Scripts{ 
 <script src="~/js/CustomScript.js"></script>
