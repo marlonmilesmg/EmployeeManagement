@@ -32,7 +32,13 @@ namespace EmployeeManagement
             // Use Default page Index.html or Default.html
            // app.UseDefaultFiles();
             app.UseStaticFiles();
-            app.UseMvcWithDefaultRoute();
+             app.UseMvcWithDefaultRoute();
+            //app.UseMvc(routes =>
+            //    {
+            //        routes.MapRoute("default", "{controller=Home}/{action=Index}/{id?}");
+            //    });
+
+
 
             /*   // Opening another page as default instead of the Default page using DefaultFileOptions Middleware {
                DefaultFilesOptions defaultFilesOptions = new DefaultFilesOptions();
