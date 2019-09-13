@@ -10,5 +10,7 @@ namespace EmployeeManagement.Models
         Employee GetEmployee(int Id);
         IEnumerable<Employee> GetAllEmployee(); // Method to output list of employees
         Employee Add(Employee employee); // Method to Add a new employee
+        Employee Update(Employee employeeChanges); // Method to Update Employee Details
+        Employee Delete(int id);
     }
 }
