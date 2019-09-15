@@ -34,7 +34,10 @@
         <div >
             @RenderBody()
         </div>
-        @RenderSection("Scripts", required: false)
-    </div>
+        @if (IsSectionDefined("Scripts"))
+        { 
+            @RenderSection("Scripts", required: false)
+        }
+        </div>
 </body>
 </html>
