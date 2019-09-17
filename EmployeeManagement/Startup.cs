@@ -39,6 +39,10 @@ namespace EmployeeManagement
             {
                 app.UseDeveloperExceptionPage();
             }
+            else
+            {
+                app.UseStatusCodePagesWithReExecute("/Error/{0}");
+            }
 
             // Use Default page Index.html or Default.html
            // app.UseDefaultFiles();

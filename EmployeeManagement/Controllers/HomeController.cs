@@ -27,11 +27,19 @@ namespace EmployeeManagement.Controllers
           return View(model);
         }
 
-        public ViewResult Details(int Id)
+        public ViewResult Details(int ? Id)
         {
+            Employee employee = _employeeRepository.GetEmployee(Id.Value);
+
+            if(employee == null)
+            {
+                Response.StatusCode = 404;
+                return View("EmployeeNotFound", Id.Value); 
+            }
+
             HomeDetailsViewModel homeDetailsViewModel = new HomeDetailsViewModel()
             {
-                Employee = _employeeRepository.GetEmployee(Id),
+                Employee = employee,
                 PageTitle = "Employee Details"
         };
 
