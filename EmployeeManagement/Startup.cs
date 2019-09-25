@@ -6,6 +6,7 @@ using EmployeeManagement.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -28,6 +29,9 @@ namespace EmployeeManagement
 
             services.AddDbContextPool<AppDbContext>(options => options.UseSqlServer(_config.GetConnectionString("EmployeeDBConnection")));
 
+            services.AddIdentity<IdentityUser, IdentityRole>()
+                    .AddEntityFrameworkStores<AppDbContext>();
+
             services.AddMvc().AddXmlDataContractSerializerFormatters();  // To return data in xml format add AddXmlDataContractSerializerFormatters()
             services.AddScoped<IEmployeeRepository, SQLEmployeeRepository>();
         }
@@ -48,6 +52,9 @@ namespace EmployeeManagement
             // Use Default page Index.html or Default.html
            // app.UseDefaultFiles();
             app.UseStaticFiles();
+
+            app.UseAuthentication();
+
              app.UseMvcWithDefaultRoute();
             //app.UseMvc(routes =>
             //    {
