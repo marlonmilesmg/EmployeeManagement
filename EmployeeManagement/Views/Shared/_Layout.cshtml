@@ -1,11 +1,12 @@
 ﻿@*A _Layout.cshtml file is used to remove duplicate html tags on multiple pages, thereby creating a base shared layout for view pages*@
-@inject SignInManager<IdentityUser> signInManager;
+@inject SignInManager<ApplicationUser> signInManager;
 
 <!DOCTYPE html>
 
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
+    <environment include="Development">
     <link href="~/lib/bootstrap/css/bootstrap.css" rel="stylesheet" />
     <script src="~/lib/jquery/jquery.js"></script>
     <script src="~/lib/jquery-validate/jquery.validate.js"></script>
@@ -13,6 +14,7 @@
     <script src="~/lib/bootstrap/js/bootstrap.js"></script>
     <link href="~/css/site.css" rel="stylesheet" />
     <title>@ViewBag.Title</title>
+    </environment>
 </head>
 <body>
     <div class="container">
