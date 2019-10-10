@@ -2,22 +2,24 @@
 
 namespace EmployeeManagement.Migrations
 {
-    public partial class Extend_IdentyUser : Migration
+    public partial class Extend_IdentityUserAlterations : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.AddColumn<string>(
+            migrationBuilder.AlterColumn<string>(
                 name: "City",
                 table: "AspNetUsers",
                 nullable: true,
                 defaultValue: 0);
+
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropColumn(
+            migrationBuilder.AlterColumn<int>(
                 name: "City",
                 table: "AspNetUsers");
+               
         }
     }
 }
