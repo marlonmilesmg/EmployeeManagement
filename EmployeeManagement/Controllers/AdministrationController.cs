@@ -37,7 +37,7 @@ namespace EmployeeManagement.Controllers
 
                 if (result.Succeeded)
                 {
-                    return RedirectToAction("idex", "home");
+                    return RedirectToAction("index", "home");
                 }
 
                 foreach(IdentityError error in result.Errors)
