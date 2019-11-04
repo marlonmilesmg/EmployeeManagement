@@ -35,10 +35,17 @@
                     </li>
                     @if (signInManager.IsSignedIn(User) && User.IsInRole("Admin"))
                     {
-                        <li class="nav-item">
-                            <a asp-action="ListRole" asp-controller="Administration" class="nav-link">
-                                Manage Roles
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toogle" href="#" id="navbarDropdownMenuLink"
+                               data-toogle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Manage
                             </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                <a class="dropdown-item" asp-controller="Administration"
+                                    asp-action="ListUsers">Users</a>
+                                <a class="dropdown-item" asp-controller="Administration"
+                                    asp-action="ListRoles">Roles</a>
+                            </div>
                         </li>
                     }
                 </ul>
